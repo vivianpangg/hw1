@@ -18,6 +18,34 @@ void split(Node*& in, Node*& odds, Node*& evens)
 {
   /* Add code here */
 // WRITE YOUR CODE HERE
+  if( in == nullptr){
+      return;
+  }
+
+  int nodeValue = in->value;
+  Node* nextNode = in->next;
+  
+  if(nodeValue % 2 == 0 ){
+    //pushBack(evens, nodeValue);
+    in->next = evens;
+    evens = in;
+  }else if(nodeValue % 2 == 1){
+    // pushBack(odds, nodeValue);
+    in->next = odds;
+    odds = in;
+  }
+
+  in = nextNode;
+  split(in, odds, evens);
+
 }
 
 /* If you needed a helper function, write it here */
+
+// void pushBack(Node*& list, int value){
+//   if(list == nullptr){
+//     list = new Node(value, nullptr);
+//     return;
+//   }
+//   pushBack(list->next, value);
+// }
